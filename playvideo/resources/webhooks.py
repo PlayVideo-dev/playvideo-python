@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, TYPE_CHECKING
+from typing import Any, List, TYPE_CHECKING
 from urllib.parse import quote
 
 from playvideo.types import (
@@ -48,7 +48,7 @@ class SyncWebhooks:
     def __init__(self, http: SyncHttpClient) -> None:
         self._http = http
 
-    def list(self) -> tuple[list[Webhook], list[WebhookEvent]]:
+    def list(self) -> tuple[List[Webhook], List[WebhookEvent]]:
         """List all webhooks.
 
         Returns:
@@ -73,7 +73,7 @@ class SyncWebhooks:
             recent_deliveries=deliveries,
         )
 
-    def create(self, url: str, events: list[WebhookEvent]) -> WebhookWithSecret:
+    def create(self, url: str, events: List[WebhookEvent]) -> WebhookWithSecret:
         """Create a new webhook.
 
         Note: The secret is only returned once. Store it securely.
@@ -95,7 +95,7 @@ class SyncWebhooks:
         webhook_id: str,
         *,
         url: str | None = None,
-        events: list[WebhookEvent] | None = None,
+        events: List[WebhookEvent] | None = None,
         is_active: bool | None = None,
     ) -> Webhook:
         """Update a webhook."""
@@ -125,7 +125,7 @@ class AsyncWebhooks:
     def __init__(self, http: AsyncHttpClient) -> None:
         self._http = http
 
-    async def list(self) -> tuple[list[Webhook], list[WebhookEvent]]:
+    async def list(self) -> tuple[List[Webhook], List[WebhookEvent]]:
         """List all webhooks."""
         data = await self._http.get("/webhooks")
         webhooks = [_parse_webhook(w) for w in data.get("webhooks", [])]
@@ -146,7 +146,7 @@ class AsyncWebhooks:
             recent_deliveries=deliveries,
         )
 
-    async def create(self, url: str, events: list[WebhookEvent]) -> WebhookWithSecret:
+    async def create(self, url: str, events: List[WebhookEvent]) -> WebhookWithSecret:
         """Create a new webhook."""
         data = await self._http.post("/webhooks", json={"url": url, "events": events})
         webhook_data = data["webhook"]
@@ -165,7 +165,7 @@ class AsyncWebhooks:
         webhook_id: str,
         *,
         url: str | None = None,
-        events: list[WebhookEvent] | None = None,
+        events: List[WebhookEvent] | None = None,
         is_active: bool | None = None,
     ) -> Webhook:
         """Update a webhook."""

@@ -119,8 +119,10 @@ def construct_event(
         payload = payload.decode("utf-8")
     if isinstance(payload, str):
         try:
-            return json.loads(payload)
+            parsed: dict[str, Any] = json.loads(payload)
+            return parsed
         except json.JSONDecodeError as e:
             raise WebhookSignatureError(f"Invalid JSON payload: {e}") from e
 
-    return payload  # type: ignore[return-value]
+    # payload is already a dict
+    return dict(payload)

@@ -54,7 +54,7 @@ class SyncHttpClient:
         request_id = response.headers.get("x-request-id")
 
         try:
-            data = response.json()
+            data: dict[str, Any] = response.json()
         except Exception:
             data = {}
 
@@ -221,7 +221,7 @@ class AsyncHttpClient:
         request_id = response.headers.get("x-request-id")
 
         try:
-            data = response.json()
+            data: dict[str, Any] = response.json()
         except Exception:
             data = {}
 
