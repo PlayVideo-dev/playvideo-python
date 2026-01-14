@@ -6,13 +6,13 @@ from __future__ import annotations
 
 from playvideo._internal.http import SyncHttpClient
 from playvideo.resources import (
+    SyncAccount,
+    SyncApiKeys,
     SyncCollections,
+    SyncEmbed,
+    SyncUsage,
     SyncVideos,
     SyncWebhooks,
-    SyncEmbed,
-    SyncApiKeys,
-    SyncAccount,
-    SyncUsage,
 )
 
 
@@ -57,7 +57,7 @@ class PlayVideo:
         """Close the HTTP client and release resources."""
         self._http.close()
 
-    def __enter__(self) -> "PlayVideo":
+    def __enter__(self) -> PlayVideo:
         return self
 
     def __exit__(self, *args: object) -> None:

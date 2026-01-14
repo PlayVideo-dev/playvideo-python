@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import Any, TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
-from playvideo.types import Usage, UsageInfo, Limits
+from playvideo.types import Limits, Usage, UsageInfo
 
 if TYPE_CHECKING:
-    from playvideo._internal.http import SyncHttpClient, AsyncHttpClient
+    from playvideo._internal.http import AsyncHttpClient, SyncHttpClient
 
 
 def _parse_usage(data: dict[str, Any]) -> Usage:

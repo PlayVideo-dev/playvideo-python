@@ -2,19 +2,20 @@
 
 from __future__ import annotations
 
-from typing import Any, List, TYPE_CHECKING
+import builtins
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
 from playvideo.types import (
     Webhook,
-    WebhookWithSecret,
-    WebhookWithDeliveries,
     WebhookDelivery,
     WebhookEvent,
+    WebhookWithDeliveries,
+    WebhookWithSecret,
 )
 
 if TYPE_CHECKING:
-    from playvideo._internal.http import SyncHttpClient, AsyncHttpClient
+    from playvideo._internal.http import AsyncHttpClient, SyncHttpClient
 
 
 def _parse_webhook(data: dict[str, Any]) -> Webhook:
@@ -48,7 +49,7 @@ class SyncWebhooks:
     def __init__(self, http: SyncHttpClient) -> None:
         self._http = http
 
-    def list(self) -> tuple[List[Webhook], List[WebhookEvent]]:
+    def list(self) -> tuple[builtins.list[Webhook], builtins.list[WebhookEvent]]:
         """List all webhooks.
 
         Returns:
@@ -73,7 +74,7 @@ class SyncWebhooks:
             recent_deliveries=deliveries,
         )
 
-    def create(self, url: str, events: List[WebhookEvent]) -> WebhookWithSecret:
+    def create(self, url: str, events: builtins.list[WebhookEvent]) -> WebhookWithSecret:
         """Create a new webhook.
 
         Note: The secret is only returned once. Store it securely.
@@ -95,7 +96,7 @@ class SyncWebhooks:
         webhook_id: str,
         *,
         url: str | None = None,
-        events: List[WebhookEvent] | None = None,
+        events: builtins.list[WebhookEvent] | None = None,
         is_active: bool | None = None,
     ) -> Webhook:
         """Update a webhook."""
@@ -125,7 +126,7 @@ class AsyncWebhooks:
     def __init__(self, http: AsyncHttpClient) -> None:
         self._http = http
 
-    async def list(self) -> tuple[List[Webhook], List[WebhookEvent]]:
+    async def list(self) -> tuple[builtins.list[Webhook], builtins.list[WebhookEvent]]:
         """List all webhooks."""
         data = await self._http.get("/webhooks")
         webhooks = [_parse_webhook(w) for w in data.get("webhooks", [])]
@@ -146,7 +147,7 @@ class AsyncWebhooks:
             recent_deliveries=deliveries,
         )
 
-    async def create(self, url: str, events: List[WebhookEvent]) -> WebhookWithSecret:
+    async def create(self, url: str, events: builtins.list[WebhookEvent]) -> WebhookWithSecret:
         """Create a new webhook."""
         data = await self._http.post("/webhooks", json={"url": url, "events": events})
         webhook_data = data["webhook"]
@@ -165,7 +166,7 @@ class AsyncWebhooks:
         webhook_id: str,
         *,
         url: str | None = None,
-        events: List[WebhookEvent] | None = None,
+        events: builtins.list[WebhookEvent] | None = None,
         is_active: bool | None = None,
     ) -> Webhook:
         """Update a webhook."""

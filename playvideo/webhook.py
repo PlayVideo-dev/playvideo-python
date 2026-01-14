@@ -20,7 +20,6 @@ import time
 from typing import Any
 
 from playvideo.errors import WebhookSignatureError
-from playvideo.types import WebhookEvent
 
 
 def verify_signature(
@@ -52,8 +51,8 @@ def verify_signature(
     # Parse timestamp
     try:
         ts = int(timestamp)
-    except (ValueError, TypeError):
-        raise WebhookSignatureError("Invalid timestamp")
+    except (ValueError, TypeError) as e:
+        raise WebhookSignatureError("Invalid timestamp") from e
 
     # Check timestamp tolerance
     now = int(time.time() * 1000)

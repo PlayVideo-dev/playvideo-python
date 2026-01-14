@@ -2,21 +2,22 @@
 
 from __future__ import annotations
 
+from collections.abc import AsyncIterator, Iterator
 from pathlib import Path
-from typing import Any, Iterator, AsyncIterator, TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote, urlencode
 
 from playvideo.types import (
-    Video,
-    VideoStatus,
-    UploadResponse,
-    VideoEmbedInfo,
-    ProgressEvent,
     ProgressCallback,
+    ProgressEvent,
+    UploadResponse,
+    Video,
+    VideoEmbedInfo,
+    VideoStatus,
 )
 
 if TYPE_CHECKING:
-    from playvideo._internal.http import SyncHttpClient, AsyncHttpClient
+    from playvideo._internal.http import AsyncHttpClient, SyncHttpClient
 
 
 def _parse_video(data: dict[str, Any]) -> Video:

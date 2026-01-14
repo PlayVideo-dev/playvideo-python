@@ -8,9 +8,9 @@ from playvideo.errors import (
     AuthenticationError,
     AuthorizationError,
     NotFoundError,
-    ValidationError,
     RateLimitError,
     ServerError,
+    ValidationError,
 )
 
 

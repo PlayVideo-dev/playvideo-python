@@ -10,7 +10,7 @@ from playvideo.errors import (
 )
 
 # Import mock helpers from test_client
-from .test_client import mock_collection, mock_video, mock_webhook, mock_api_key, mock_account
+from .test_client import mock_account, mock_collection, mock_video, mock_webhook
 
 
 class TestAsyncPlayVideoClient:

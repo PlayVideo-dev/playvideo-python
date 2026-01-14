@@ -2,8 +2,9 @@
 PlayVideo SDK Types
 """
 
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Literal, Callable
+from typing import Literal
 
 # Type aliases
 VideoStatus = Literal["PENDING", "PROCESSING", "COMPLETED", "FAILED"]

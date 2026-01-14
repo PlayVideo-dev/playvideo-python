@@ -4,17 +4,20 @@ HTTP client implementation for PlayVideo SDK.
 
 from __future__ import annotations
 
+from collections.abc import AsyncIterator, Iterator
 from pathlib import Path
-from typing import Any, Iterator, AsyncIterator, TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 import httpx
 
 from playvideo.errors import (
-    parse_api_error,
     NetworkError,
+    parse_api_error,
+)
+from playvideo.errors import (
     TimeoutError as PlayVideoTimeoutError,
 )
-from playvideo.types import UploadProgress, ProgressEvent
+from playvideo.types import ProgressEvent, UploadProgress
 
 if TYPE_CHECKING:
     from playvideo.types import ProgressCallback

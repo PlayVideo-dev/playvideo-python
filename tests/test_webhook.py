@@ -7,8 +7,8 @@ import time
 
 import pytest
 
-from playvideo.webhook import verify_signature, construct_event
 from playvideo.errors import WebhookSignatureError
+from playvideo.webhook import construct_event, verify_signature
 
 
 def compute_signature(payload: str, timestamp: int, secret: str) -> str:

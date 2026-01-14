@@ -6,13 +6,13 @@ from __future__ import annotations
 
 from playvideo._internal.http import AsyncHttpClient
 from playvideo.resources import (
+    AsyncAccount,
+    AsyncApiKeys,
     AsyncCollections,
+    AsyncEmbed,
+    AsyncUsage,
     AsyncVideos,
     AsyncWebhooks,
-    AsyncEmbed,
-    AsyncApiKeys,
-    AsyncAccount,
-    AsyncUsage,
 )
 
 
@@ -57,7 +57,7 @@ class AsyncPlayVideo:
         """Close the HTTP client and release resources."""
         await self._http.close()
 
-    async def __aenter__(self) -> "AsyncPlayVideo":
+    async def __aenter__(self) -> AsyncPlayVideo:
         return self
 
     async def __aexit__(self, *args: object) -> None:

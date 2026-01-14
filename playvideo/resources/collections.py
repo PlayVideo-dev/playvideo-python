@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Any, TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 from urllib.parse import quote
 
 from playvideo.types import Collection, CollectionWithVideos, Video
 
 if TYPE_CHECKING:
-    from playvideo._internal.http import SyncHttpClient, AsyncHttpClient
+    from playvideo._internal.http import AsyncHttpClient, SyncHttpClient
 
 
 def _parse_collection(data: dict[str, Any]) -> Collection:

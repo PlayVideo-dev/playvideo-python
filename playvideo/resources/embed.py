@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import Any, TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
-from playvideo.types import EmbedSettings, SignEmbedResponse, LogoPosition
+from playvideo.types import EmbedSettings, LogoPosition, SignEmbedResponse
 
 if TYPE_CHECKING:
-    from playvideo._internal.http import SyncHttpClient, AsyncHttpClient
+    from playvideo._internal.http import AsyncHttpClient, SyncHttpClient
 
 
 def _parse_embed_settings(data: dict[str, Any]) -> EmbedSettings:
