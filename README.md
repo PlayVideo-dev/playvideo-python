@@ -11,7 +11,7 @@ Official Python SDK for the [PlayVideo](https://playvideo.dev) API - Video hosti
 ## Installation
 
 ```bash
-pip install playvideo
+pip install playvideo-python
 ```
 
 **Requirements:** Python 3.10+
