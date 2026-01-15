@@ -1,8 +1,8 @@
 # PlayVideo SDK for Python
 
 [![CI](https://github.com/PlayVideo-dev/playvideo-python/actions/workflows/ci.yml/badge.svg)](https://github.com/PlayVideo-dev/playvideo-python/actions/workflows/ci.yml)
-[![PyPI version](https://img.shields.io/pypi/v/playvideo.svg)](https://pypi.org/project/playvideo/)
-[![PyPI downloads](https://img.shields.io/pypi/dm/playvideo.svg)](https://pypi.org/project/playvideo/)
+[![PyPI version](https://img.shields.io/pypi/v/playvideo-python.svg)](https://pypi.org/project/playvideo-python/)
+[![PyPI downloads](https://img.shields.io/pypi/dm/playvideo-python.svg)](https://pypi.org/project/playvideo-python/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
