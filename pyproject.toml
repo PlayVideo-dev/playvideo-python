@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "playvideo"
+name = "playvideo-python"
 version = "1.0.0"
 description = "Official PlayVideo SDK for Python - Video hosting for developers"
 readme = "README.md"
